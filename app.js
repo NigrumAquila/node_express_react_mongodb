@@ -6,7 +6,12 @@ const app = express()
 const userRoutes = require('./routes/user')
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/node_react_mongodb`, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/node_react_mongodb`, {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true, 
+    useFindAndModify: false, 
+    useCreateIndex: true
+});
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
